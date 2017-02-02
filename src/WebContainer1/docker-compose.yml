@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  webcontainer1:
+    image: webcontainer1
+    build:
+      context: .
+      dockerfile: Dockerfile
