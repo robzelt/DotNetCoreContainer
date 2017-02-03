@@ -1,6 +1,0 @@
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\bin\Debug\netcoreapp1.0\CodeCampCore.dll
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\bin\Debug\netcoreapp1.0\CodeCampCore.pdb
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\obj\Debug\netcoreapp1.0\CodeCampCore.csprojResolveAssemblyReference.cache
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\obj\Debug\netcoreapp1.0\CodeCampCore.AssemblyInfo.cs
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\obj\Debug\netcoreapp1.0\CodeCampCore.dll
-c:\users\robze\documents\visual studio 2017\Projects\CodeCampCore\src\CodeCampCore\obj\Debug\netcoreapp1.0\CodeCampCore.pdb
