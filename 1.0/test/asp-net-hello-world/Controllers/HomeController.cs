@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CodeCampCore.Controllers
+namespace CoreDemo11.Controllers
 {
     public class HomeController : Controller
     {
