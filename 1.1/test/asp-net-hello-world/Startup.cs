@@ -1,60 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE.txt in the project root for license information.
+
+using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace MvcApp
+namespace SampleApp
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
+            loggerFactory.AddConsole(LogLevel.Trace);
 
-        public IConfigurationRoot Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
+            app.Run(async context =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+                Console.WriteLine("{0} {1}{2}{3}",
+                    context.Request.Method,
+                    context.Request.PathBase,
+                    context.Request.Path,
+                    context.Request.QueryString);
+                Console.WriteLine($"Method: {context.Request.Method}");
+                Console.WriteLine($"PathBase: {context.Request.PathBase}");
+                Console.WriteLine($"Path: {context.Request.Path}");
+                Console.WriteLine($"QueryString: {context.Request.QueryString}");
 
-            app.UseStaticFiles();
+                var connectionFeature = context.Connection;
+                Console.WriteLine($"Peer: {connectionFeature.RemoteIpAddress?.ToString()} {connectionFeature.RemotePort}");
+                Console.WriteLine($"Sock: {connectionFeature.LocalIpAddress?.ToString()} {connectionFeature.LocalPort}");
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                context.Response.ContentLength = 11;
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync("Hello world");
             });
+        }
+
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel(options =>
+                {
+                    // options.ThreadCount = 4;
+                    options.NoDelay = true;
+                    options.UseHttps("testCert.pfx", "testPassword");
+                    options.UseConnectionLogging();
+                })
+                .UseUrls("http://0.0.0.0:8080", "https://0.0.0.0:8081")
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .Build();
+
+            // The following section should be used to demo sockets
+            //var addresses = application.GetAddresses();
+            //addresses.Clear();
+            //addresses.Add("http://unix:/tmp/kestrel-test.sock");
+
+            host.Run();
         }
     }
 }

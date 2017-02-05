@@ -1,8 +1,0 @@
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\bin\Debug\netcoreapp1.0\asp-net-hello-world.deps.json
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\bin\Debug\netcoreapp1.0\asp-net-hello-world.runtimeconfig.json
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\bin\Debug\netcoreapp1.0\asp-net-hello-world.runtimeconfig.dev.json
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\bin\Debug\netcoreapp1.0\asp-net-hello-world.dll
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\bin\Debug\netcoreapp1.0\asp-net-hello-world.pdb
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\obj\Debug\netcoreapp1.0\asp-net-hello-world.AssemblyInfo.cs
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\obj\Debug\netcoreapp1.0\asp-net-hello-world.dll
-C:\Users\robze\Documents\GitHub\DotNetCoreContainer\1.1\test\asp-net-hello-world\obj\Debug\netcoreapp1.0\asp-net-hello-world.pdb
