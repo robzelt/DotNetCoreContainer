@@ -1,3 +1,3 @@
 ﻿{
-  "urls": "http://localhost:8080;http://localhost:5101;http://*:8081"
+  "urls": "http://0.0.0.0:8080;http://0.0.0.0:8101;http://*:8080"
 }
