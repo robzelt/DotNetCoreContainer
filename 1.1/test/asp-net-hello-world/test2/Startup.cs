@@ -12,11 +12,24 @@ using Microsoft.Extensions.Logging;
 using WebApplication.Data;
 using WebApplication.Models;
 using WebApplication.Services;
+using System.IO;
 
 namespace WebApplication
 {
     public class Startup
     {
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseUrls("http://0.0.0.0:8080", "https://0.0.0.0:8081")
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
