@@ -15,8 +15,7 @@ namespace WebApplication.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = System.Net.Dns.GetHostName();
-
+            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
